@@ -9,12 +9,18 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v6
-        with:
-          node-version: lts/*
+      - name : Build Dcoker image
+        run:  docker build -t project-poc-playwright .
 
-      - run: npm ci
+      - name: Run Smoke Tests
+        run: docker run --rm project-poc-playwright npm run test:qa -- --grep "@smoke"
 
-      - run: npx playwright install --with-deps
+      # - uses: actions/setup-node@v6
+      #   with:
+      #     node-version: lts/*
 
-      - run: npm run test:qa -- --grep "@smoke"    
+      # - run: npm ci
+
+      # - run: npx playwright install --with-deps
+
+      # - run: npm run test:qa -- --grep "@smoke"    
