@@ -1,25 +1,26 @@
 import { Page } from '@playwright/test'
 
-import {Env} from '@config/Env'
+import { Env } from '@config/Env'
+
+import { LoginPageLocators } from '@locators/LoginPageLocators';
 
 export class LoginPage {
 
-    page: Page
-    constructor(page: Page) {
-        this.page = page;
+    readonly username;
+    readonly password;
+    readonly loginBtn;
+
+    constructor(private page: Page) {
+        this.username = page.getByPlaceholder(LoginPageLocators.username)
+        this.password = page.getByPlaceholder(LoginPageLocators.password);
+        this.loginBtn = page.getByRole("button",{name:LoginPageLocators.loginBtn})
     }
 
-
-    async login() {
+    async login(user: string, pass: string) {
 
         await this.page.goto(Env.baseUrl)
-
-        await this.page.getByPlaceholder('Username').fill('standard_user')
-
-        await this.page.getByPlaceholder('Password').fill('secret_sauce')
-
-        await this.page.getByRole('button',{name:'Login'}).click()
-
+        await this.username.fill(user);
+        await this.password.fill(pass);
+        await this.loginBtn.click();
     }
-
 }

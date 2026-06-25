@@ -51,6 +51,9 @@
       ],
       "@config/*": [
         "config/*"
+      ],
+      "@locators/*": [
+        "locators/*"
       ]
     }
   },
@@ -59,6 +62,7 @@
     "fixtures/**/*.ts",
     "pages/**/*.ts",
     "manager/**/*.ts",
-    "config/**/*.ts"
+    "config/**/*.ts",
+    "locators/**/*.ts"
   ],
 }
