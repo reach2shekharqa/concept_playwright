@@ -1,5 +1,7 @@
 import { Page } from '@playwright/test'
 
+import {Env} from '@config/Env'
+
 export class LoginPage {
 
     page: Page
@@ -10,7 +12,7 @@ export class LoginPage {
 
     async login() {
 
-        await this.page.goto('https://www.saucedemo.com/')
+        await this.page.goto(Env.baseUrl)
 
         await this.page.getByPlaceholder('Username').fill('standard_user')
 

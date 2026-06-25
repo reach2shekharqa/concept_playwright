@@ -10,7 +10,6 @@
     "target": "esnext",
     "types": [
       "node"
-      
     ],
     // For nodejs:
     // "lib": ["esnext"],
@@ -41,16 +40,25 @@
     // "ignoreDeprecations": "6.0",
     "baseUrl": ".",
     "paths": {
-      "@pages/*":["pages/*"],
-      "@fixtures/*":["fixtures/*"],
-      "@manager/*":["manager/*"]
-
+      "@pages/*": [
+        "pages/*"
+      ],
+      "@fixtures/*": [
+        "fixtures/*"
+      ],
+      "@manager/*": [
+        "manager/*"
+      ],
+      "@config/*": [
+        "config/*"
+      ]
     }
   },
   "include": [
     "tests/**/*.ts",
     "fixtures/**/*.ts",
     "pages/**/*.ts",
-    "manager/**/*.ts"
+    "manager/**/*.ts",
+    "config/**/*.ts"
   ],
 }
